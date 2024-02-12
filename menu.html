@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #e44d26;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+            vertical-align: top;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 80%;
+            max-height: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .modal img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #e44d26;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <container>
+        <h2>Featured Food Items</h2>
+
+        <div class="card-container">
+            <div class="card" onclick="openModal('./paneer-tikka.jpg', 'Paneer Tikka')">
+                <img src="./paneer-tikka.jpg" alt="Paneer Tikka">
+                <div class="card-content">
+                    <h3>Paneer Tikka</h3>
+                    <p>Indulge in the rich and smoky flavors of our Paneer Tikka. Succulent pieces of paneer marinated in a blend of spices and grilled to perfection, creating a culinary delight that will leave you craving for more.</p>
+                    <button onclick="viewPrice('Paneer Tikka')">View Price</button>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('./dal_makhani_img.jpg', 'Dal Makhani')">
+                <img src="./dal_makhani_img.jpg" alt="Dal Makhani">
+                <div class="card-content">
+                    <h3>Dal Makhani</h3>
+                    <p>Experience the creamy and flavorful Dal Makhani, a classic Indian dish made with black lentils and kidney beans simmered in a rich tomato-based gravy. A true delight for your taste buds.</p>
+                    <button onclick="viewPrice('Dal Makhani')">View Price</button>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('./edili_sambhar_img.jpg', 'Edili Sambhar')">
+                <img src="./edili_sambhar_img.jpg" alt="Edili Sambhar">
+                <div class="card-content">
+                    <h3>Edili Sambhar</h3>
+                    <p>Delight in the South Indian flavors of Edili Sambhar. Soft rice cakes served with a delicious and tangy sambhar, creating a perfect combination of textures and tastes.</p>
+                    <button onclick="viewPrice('Edili Sambhar')">View Price</button>
+                </div>
+            </div>
+
+            
+
+            <div class="card" onclick="openModal('./chicken_tandoori_img.jpg', 'Chicken Tandoori')">
+                <img src="./chicken_tandoori_img.jpg" alt="Chicken Tandoori">
+                <div class="card-content">
+                    <h3>Chicken Tandoori</h3>
+                    <p>Savor the succulence of Chicken Tandoori, marinated in aromatic spices and grilled to perfection. A true Indian culinary classic that will satisfy your meat cravings.</p>
+                    <button onclick="viewPrice('Chicken Tandoori')">View Price</button>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('./biryani_img.jpg', 'Biryani')">
+                <img src="./biryani_img.jpg" alt="Biryani">
+                <div class="card-content">
+                    <h3>Biryani</h3>
+                    <p>Indulge in the aromatic and flavorful Biryani, a traditional Indian dish made with fragrant basmati rice, aromatic spices, and your choice of meat or vegetables. A royal feast for your taste buds.</p>
+                    <button onclick="viewPrice('Biryani')">View Price</button>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('./misal_pav_img.jpg', 'Misal Pav')">
+                <img src="./misal_pav_img.jpg" alt="Misal Pav">
+                <div class="card-content">
+                    <h3>Misal Pav</h3>
+                    <p>Spice up your taste buds with Misal Pav, a spicy Maharashtrian dish made with sprouted lentils, topped with farsan, onions, and served with pav. A true street food delight.</p> 
+                    <p></p>
+                    <button onclick="viewPrice('Misal Pav')">View Price</button>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('./chole_bhattore_img.jpg', 'Chole Bhature')">
+                <img src="./chole_bhattore_img.jpg" alt="Chole Bhature">
+                <div class="card-content">
+                    <h3>Chole Bhature</h3>
+                    <p>Experience the indulgence of Chole Bhature, a popular North Indian dish featuring spicy chickpeas (chole) served with deep-fried bread (bhature). A hearty and satisfying meal.</p>
+                    <button onclick="viewPrice('Chole Bhature')">View Price</button>
+                </div>
+            </div>
+
+            <div class="card" onclick="openModal('./fish_curry_img.jpg', 'Fish Curry')">
+                <img src="./fish_curry_img.jpg" alt="Fish Curry">
+                <div class="card-content">
+                    <h3>Fish Curry</h3>
+                    <p>Dive into the flavors of coastal India with our Fish Curry. A delicious curry made with a blend of spices and tender fish, creating a delightful seafood experience.</p>
+                    <button onclick="viewPrice('Fish Curry')">View Price</button>
+                </div>
+            </div>
+        </div>
+    </container>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Modal Image">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc, caption) {
+            document.getElementById("modalImage").src = imageSrc;
+            document.getElementById("myModal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function viewPrice(dishName) {
+            
+            let price;
+            switch (dishName) {
+                case 'Paneer Tikka':
+                    price = 'Rs. 200';
+                    break;
+                case 'Dal Makhani':
+                    price = 'Rs. 180';
+                    break;
+                case 'Edili Sambhar':
+                    price = 'Rs. 150';
+                    break;
+                case 'Chicken Tandoori':
+                    price = 'Rs. 250';
+                    break;
+                case 'Biryani':
+                    price = 'Rs. 220';
+                    break;
+                case 'Misal Pav':
+                    price = 'Rs. 120';
+                    break;
+                case 'Chole Bhature':
+                    price = 'Rs. 180';
+                    break;
+                case 'Fish Curry':
+                    price = 'Rs. 300';
+                    break;
+                default:
+                    price = 'N/A';
+            }
+            alert(`Price for ${dishName}: ${price}`);
+        }
+    </script>
+
+</body>
+</html>
